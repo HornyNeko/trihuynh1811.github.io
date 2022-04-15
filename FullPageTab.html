@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="FullPageTab.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>my website</title>
+  </head>
+
+    <header>
+
+    </header>
+    <body>
+      <button type="button" class="tablink" id="Default" onclick="openPage('Home', this)">Home</button>
+      <button type="button" class="tablink" onclick="openPage('New', this)">New</button>
+      <button type="button" class="tablink" onclick="openPage('Contact', this)">Contact</button>
+      <button type="button" class="tablink" onclick="openPage('Other', this)">Other</button>
+    <div class="tabcontent" id="Home">
+     <div class="navMenu">
+       <a href="#">Home</a>
+       <button type="button" class="dropdown-btn" onclick="dropdown()">More<i class="fa fa-caret-down"></i></button>
+       <div class="dropdownContent">
+         <a class="contentLink" href="#" onclick="displayContent('content_0', this, 'purple')">content_0</a>
+         <a class="contentLink" href="#" onclick="displayContent('content_1', this, 'yellow')">content_1</a>
+         <a class="contentLink" href="#" onclick="displayContent('content_2', this, 'white')">content_2</a>
+       </div>
+     </div>
+     <div class="Content" id="content_0">
+       <h2>0</h2>
+       <button type="button" class="fa fa-close" title="close" onclick="closeDisplay(0, this)"></button>
+     </div>
+     <div class="Content" id="content_1">
+        <h2>1</h2>
+        <button type="button" class="fa fa-close" value="close" onclick="closeDisplay(1, this)"></button>
+     </div>
+     <div class="Content" id="content_2">
+        <h2>2</h2>
+        <button type="button" class="fa fa-close" value="close" onclick="closeDisplay(2, this)"></button>
+     </div>
+    </div>
+
+    <div class="tabcontent" id="New">
+      <div class="SearchFilterContainer">
+        <input type="text" placeholder="Enter something" onkeyup="searchFilter()" id="inputField">
+        <ul id="resultList">
+          <li><a href="http://youtube.com">Youtube</a></li>
+          <li><a href="http://google.com">Google</a></li>
+          <li><a href="http://nhentai.net">Nhentai</a></li>
+          <li><a href="http://redgifs.com">Red Gifs</a></li>
+          <li><a href="http://reddit.com">Reddit</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tabcontent" id="Contact">
+     <h2>Contact</h2>
+    </div>
+
+    <div class="tabcontent" id="Other">
+      <div class="Container-Slide">
+        <div class="slideContainer">
+          <div class="slides">
+            <img src="https://wallpaperaccess.com/full/1628759.jpg" alt="">
+          </div>
+
+          <div class="slides">
+            <img src="https://images3.alphacoders.com/551/thumb-1920-551461.jpg" alt="">
+          </div>
+
+          <div class="slides">
+            <img src="https://www.gamewallpapers.com/download.php?img=wallpaper_world_of_tanks_05_1920x1080.jpg" alt="">
+          </div>
+
+          <div class="slides">
+            <img src="https://images5.alphacoders.com/105/thumb-1920-1053760.jpg" alt="">
+          </div>
+
+        </div>
+        <a class="next" href="#" onclick="plusSlide(1)">▶</a>
+        <a class="prev" href="#" onclick="plusSlide(-1)">◀</a>
+
+        <div class="row">
+          <div class="column">
+            <img src="https://wallpaperaccess.com/full/1628759.jpg" alt="" onclick="currentSlide(1)"class="demo cursor">
+          </div>
+          <div class="column">
+            <img src="https://images3.alphacoders.com/551/thumb-1920-551461.jpg" alt="" onclick="currentSlide(2)"class="demo cursor">
+          </div>
+          <div class="column">
+            <img src="https://www.gamewallpapers.com/download.php?img=wallpaper_world_of_tanks_05_1920x1080.jpg" alt="" onclick="currentSlide(3)"class="demo cursor">
+          </div>
+          <div class="column">
+            <img src="https://images5.alphacoders.com/105/thumb-1920-1053760.jpg" alt="" onclick="currentSlide(4)"class="demo cursor">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    function openPage(pageName, element){
+      var i, tablink, tabcontent;
+      tablink = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablink.length; i++) {
+        tablink[i].style.backgroundColor = "";
+      }
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (var i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      document.getElementById(pageName).style.display = "block";
+      element.style.backgroundColor = "black";
+      element.style.color = "red";
+    }
+    document.getElementById("Default").click();
+    function dropdown(){
+      var i, caretDown;
+      var dropdownBtn = document.getElementsByClassName("dropdown-btn");
+      for (i = 0; i < dropdownBtn.length; i++) {
+        dropdownBtn[i].addEventListener("click", function(){
+          this.classList.toggle("active");
+          var dropdownContent = this.nextElementSibling;
+          if(dropdownContent.style.display === "block"){
+            dropdownContent.style.display = "none";
+          }
+          else {
+            dropdownContent.style.display = "block";
+          }
+        })
+      }
+    }
+    function searchFilter(){
+      var ul, li, i, a, input, filter, txtValue;
+      input = document.getElementById("inputField");
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("resultList");
+      li = ul.getElementsByTagName("li");
+      for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if(input.value < 1){
+          li[i].style.visibility = "hidden";
+        }
+        else{
+          if(txtValue.toUpperCase().indexOf(filter) > -1){
+            li[i].style.display = "";
+            li[i].style.visibility = "visible";
+          }
+          else {
+            li[i].style.display = "none";
+          }
+        }
+
+      }
+    }
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    function plusSlide(n){
+      showSlides(slideIndex += n);
+    }
+    function currentSlide(n){
+      showSlides(slideIndex = n);
+    }
+    function showSlides(n){
+      var i, slides, dots;
+      slides = document.getElementsByClassName("slides");
+      dots = document.getElementsByClassName("demo");
+      if(n > slides.length){slideIndex = 1}
+      if(n < 1){slideIndex = slides.length}
+      console.log(n);
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+
+    function displayContent(content, element, color){
+      var i, a, contents;
+      a = document.getElementsByClassName("contentLink");
+      contents = document.getElementsByClassName("Content");
+      for (i = 0; i < a.length; i++) {
+        a[i].style.backgroundColor ="";
+      }
+      for (i = 0; i < contents.length; i++) {
+        contents[i].style.display = "none";
+      }
+      document.getElementById(content).style.display = "block";
+      document.getElementById(content).style.backgroundColor = color;
+      element.style.backgroundColor = "red";
+    }
+
+    function closeDisplay(n, element){
+      var a, ddC;
+      ddC = document.getElementsByClassName("dropdownContent");
+      for (var i = 0; i < ddC.length; i++) {
+        console.log(ddC[i]);
+        a = ddC[i].getElementsByTagName("a")[n];
+        a.style.backgroundColor = "";
+      }
+      element.parentElement.style.display = "none";
+    }
+  </script>
+
+</html>

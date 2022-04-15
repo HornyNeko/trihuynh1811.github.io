@@ -1,0 +1,206 @@
+body, html{
+  background-color: black;
+  height: 100%;
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+/* full page tab */
+#Home{background-color: green; margin: 0; padding: 0}
+#Contact{background-color: green}
+#New{background-color: green}
+#Other{margin: 0; padding: 0;}
+.tabcontent{
+  height: 100%;
+  padding: 100px 20px;
+  display: none;
+}
+.tablink{
+  border: none;
+  outline: none;
+  width: 25%;
+  padding: 20px 16px;
+  margin: 0;
+  float: left;
+  cursor: pointer;
+}
+.tablink:hover{
+  background-color: black;
+  color: red;
+}
+/*vertical drop down*/
+.navMenu{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 200px;
+  background-color: black;
+  top: 0;
+  left: 0;
+  position: fixed;
+  margin-top: 57px;
+}
+.navMenu a{
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  text-align: left;
+  padding: 5px 0px;
+  border: 3px solid red;
+}
+.dropdown-btn{
+  border: 3px solid red;
+  outline: none;
+  background-color: rgba(0,0,0,0);
+  font-size: 20px;
+  padding: 5px 0px;
+  width: 100%;
+  text-align: left;
+}
+.dropdownContent a{
+  padding-left: 10px;
+  margin-left: 10px;
+}
+.dropdownContent{
+  display: none;
+}
+.fa-caret-down{
+  float: right;
+  margin-right: 10px;
+}
+.active{
+  border: 3px solid gold;
+}
+/* Search filter */
+.SearchFilterContainer{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
+  width: 500px;
+  overflow: auto;
+  box-shadow: 0px 5px 5px 0px black;
+}
+#inputField{
+  border: none;
+  outline: none;
+  padding: 20px 0px;
+  width: 100%;
+  font-size: 20px;
+  color: white;
+  border-radius: 50px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+#resultList a{
+  display: block;
+  width: 100%;
+  padding: 20px 0px;
+  text-decoration: none;
+  font-size: 20px;
+  padding-left: 10px;
+  color: white;
+}
+#resultList a:hover{
+  border: 5px solid red;
+}
+#resultList{
+  margin: 0;
+  padding: 0;
+}
+#resultList li{
+  list-style: none;
+  visibility: hidden;
+}
+/* Image slide show */
+.Container-Slide{
+  position: absolute;
+  right: 0;
+  top: 56px;
+  width: 1000px;
+}
+.slideContainer{
+  margin-bottom: 72px;
+  padding: 0;
+}
+.row:after{
+  clear: both;
+  content: "";
+  display: table;
+}
+.row{
+  border: 10px solid red;
+
+}
+img{
+  vertical-align: middle;
+
+}
+.column img{
+  width: 100%;
+}
+.column{
+  width: 25%;
+  float: left;
+  padding: 10px;
+}
+.slides{
+  width: 100%;
+  display: none;
+  left: 50%;
+}
+.slides img{
+  object-fit: cover;
+  width: 100%;
+}
+.prev, .next{
+  user-select: none;
+  position: absolute;
+  top: 70%;
+  background-color: rgba(0,128,0, 0.5);
+  padding: 30px 20px 25px;
+  text-decoration: none;
+}
+.prev{
+  padding-right: 46.75%;
+}
+.next{
+  position: absolute;
+  right: 0px;
+  padding-left: 46.75%;
+}
+.prev:hover, .next:hover{
+  background-color: rgba(0,128,0, 1);
+}
+.cursor{
+  cursor: pointer;
+}
+.demo{
+  opacity: 0.6;
+}
+.active, .demo:hover{
+  opacity: 1;
+}
+.Content{
+  height: 100%;
+  position: absolute;
+  right: 0;
+  width: 85%;
+  top: 60px;
+  background-color: black;
+}
+/* content display */
+.Content{
+  display: none;
+}
+.fa-close{
+  float: right;
+  border: 0;
+  outline: 0;
+  background: none;
+  cursor: pointer;
+  margin-top: -60px;
+}
